@@ -1,40 +1,40 @@
 # Python compiled files and cache
-__pycache__/                # Python cache directories created during runtime
-*.pyc                       # Compiled Python files
-*.py[cod]                   # Python compiled files (.pyo, .pyc, .pyd)
-*$py.class                  # Python class files
-*.so                        # Compiled C extensions (shared objects)
-.Python                     # Python build artifacts
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
 
-# Virtual Environments - isolated Python environments
-venv/                       # Common virtual environment folder name
-env/                        # Alternative virtual environment name
-ENV/                        # Another alternative virtual environment name
+# Virtual Environments
+venv/
+env/
+ENV/
 
-# Build and Distribution - generated during package builds
-build/                      # Build artifacts directory
-dist/                       # Distribution/package output directory
-*.egg-info/                 # Python package metadata
+# Build and Distribution
+build/
+dist/
+*.egg-info/
 
 # Secrets & Environment Variables - NEVER commit these!
-.env                        # Contains API keys, secrets, credentials
+.env
 
-# Logs - application runtime logs
-logs/                       # Log directory
-*.log                       # Individual log files
+# Logs
+logs/
+*.log
 
-# IDE and Editor files - personal development environment settings
-.vscode/                    # VS Code settings (optional - some teams share this)
-.idea/                      # PyCharm/IntelliJ settings
-*.swp                       # Vim swap files
-*.swo                       # Vim swap files
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Operating System files
-.DS_Store                   # macOS folder metadata
-Thumbs.db                   # Windows thumbnail cache
+.DS_Store
+Thumbs.db
 
-# Testing and Coverage - test artifacts
-.pytest_cache/              # Pytest cache directory
-.coverage                   # Coverage.py data file
-htmlcov/                    # HTML coverage reports directory
-.tox/                       # Tox testing environments
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
