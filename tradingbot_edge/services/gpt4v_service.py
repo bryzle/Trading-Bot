@@ -75,5 +75,54 @@ class GPT4VChartAnalyzer:
         Return ONLY valid JSON, no additional text."""
 
         return prompt
-
     
+    def _call_gpt4v(self,image_url:str, prompt:str) -> str:
+        """Call OPENAI GPT-4v API"""
+        response = self.client.chat.completions.create(
+            model = "gpt-4o",
+            messages =[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": prompt},
+                        {"type": "image_url", "image_url": {"url": image_url}}
+                    ]
+                }
+            ],
+            max_tokens=1000
+        )
+        
+        return response.choices[0].message.content
+
+    def _parse_response(self, response:str, symbol:str) -> ChartAnalysisResponse:
+        """Parse GPT-4V response into structured format"""
+        try:
+            # Parse JSON from GPT-4V response
+            data = json.loads(response)
+            
+            # Extract patterns and convert to PatternDetection objects
+            patterns = [
+                PatternDetection(pattern_name = p["pattern_name"], confidence = p["confidence"],description = p["description"])
+                for p in data.get("patterns",[])
+            ]
+            
+            
+            
+            return ChartAnalysisResponse(
+                symbol=symbol,
+                analysis=data.get("overall_analysis",""),  # Get from data
+                patterns=patterns,
+                sentiment=data.get("sentiment","neutral"),  # Get from data
+                confidence_score=data.get("confidence_score",.5),  # Get from data
+                timestamp=datetime.now()
+            )
+            
+        except json.JSONDecodeError:
+            return ChartAnalysisResponse(
+                symbol=symbol,
+                analysis=response,  # Use raw response as fallback
+                patterns=[],  # Empty list
+                sentiment="neutral",
+                confidence_score=0.0,
+                timestamp=datetime.now()
+            )

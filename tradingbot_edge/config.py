@@ -3,6 +3,7 @@ Configuration settings for TradingEdge AI
 """
 import os
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 from functools import lru_cache
 
 
@@ -27,9 +28,7 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
+    model_config = ConfigDict(env_file=".env", case_sensitive=False, extra="ignore")
 
 
 @lru_cache()

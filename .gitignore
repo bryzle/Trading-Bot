@@ -1,3 +1,40 @@
-__pycache__
-*.pyc
-logs
+# Python compiled files and cache
+__pycache__/                # Python cache directories created during runtime
+*.pyc                       # Compiled Python files
+*.py[cod]                   # Python compiled files (.pyo, .pyc, .pyd)
+*$py.class                  # Python class files
+*.so                        # Compiled C extensions (shared objects)
+.Python                     # Python build artifacts
+
+# Virtual Environments - isolated Python environments
+venv/                       # Common virtual environment folder name
+env/                        # Alternative virtual environment name
+ENV/                        # Another alternative virtual environment name
+
+# Build and Distribution - generated during package builds
+build/                      # Build artifacts directory
+dist/                       # Distribution/package output directory
+*.egg-info/                 # Python package metadata
+
+# Secrets & Environment Variables - NEVER commit these!
+.env                        # Contains API keys, secrets, credentials
+
+# Logs - application runtime logs
+logs/                       # Log directory
+*.log                       # Individual log files
+
+# IDE and Editor files - personal development environment settings
+.vscode/                    # VS Code settings (optional - some teams share this)
+.idea/                      # PyCharm/IntelliJ settings
+*.swp                       # Vim swap files
+*.swo                       # Vim swap files
+
+# Operating System files
+.DS_Store                   # macOS folder metadata
+Thumbs.db                   # Windows thumbnail cache
+
+# Testing and Coverage - test artifacts
+.pytest_cache/              # Pytest cache directory
+.coverage                   # Coverage.py data file
+htmlcov/                    # HTML coverage reports directory
+.tox/                       # Tox testing environments
