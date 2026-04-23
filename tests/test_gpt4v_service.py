@@ -1,8 +1,8 @@
 from tradingbot_edge.services.gpt4v_service import GPT4VChartAnalyzer
 from unittest.mock import patch
 
-@patch('tradingbot_edge.services.gpt4v_service.OpenAI')  # patch OpenAI, not the whole class
-def test_parse_response_valid_json(mock_openai):
+@patch('tradingbot_edge.services.gpt4v_service.anthropic.Anthropic')
+def test_parse_response_valid_json(mock_anthropic):
     # mock_openai now replaces the OpenAI constructor — __init__ won't crash
     analyzer = GPT4VChartAnalyzer()
 
